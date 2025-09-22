@@ -45,7 +45,9 @@ export default function _layout() {
           height: 52,
           position: "absolute",
           overflow: "hidden",
-          borderWidth: 1,
+          borderWidth: 0,
+          borderTopWidth: 0, // Remove default border
+          elevation: 0, // Remove shadow on Android
           borderColor: "#0F0D23",
         },
       }}
