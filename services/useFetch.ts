@@ -30,7 +30,7 @@ const useFetch = <T>(fetchFunction: () => Promise<T>, autoFetch = true) => {
   // check if autofetch is turned on; if true, call fetchData function
   useEffect(() => {
     if (autoFetch) {
-      fetchData;
+      fetchData();
     }
   }, []);
 
