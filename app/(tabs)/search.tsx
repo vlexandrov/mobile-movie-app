@@ -4,11 +4,12 @@ import { icons } from "@/constants/icons";
 import { images } from "@/constants/images";
 import { fetchMovies } from "@/services/api";
 import useFetch from "@/services/useFetch";
-import React from "react";
+import React, { useState } from "react";
 import { ActivityIndicator, FlatList, Image, Text, View } from "react-native";
 
 export default function Search() {
   // search query state
+  const [searchQuery, setSearchQuery] = useState("");
 
   // function to handle search queries
 
@@ -19,7 +20,7 @@ export default function Search() {
     error,
   } = useFetch(() =>
     fetchMovies({
-      query: "",
+      query: searchQuery,
     })
   );
 
@@ -56,7 +57,11 @@ export default function Search() {
             </View>
 
             <View className="my-5">
-              <SearchBar placeholder="Search movies..." />
+              <SearchBar
+                placeholder="Search movies..."
+                value={searchQuery}
+                onChangeText={(text: string) => setSearchQuery(text)}
+              />
             </View>
 
             {loading && (
@@ -73,15 +78,12 @@ export default function Search() {
               </Text>
             )}
 
-            {!loading &&
-              !error &&
-              "SEARCH TERM".trim() &&
-              movies?.length > 0 && (
-                <Text className="text-xl text-white">
-                  Search results for{" "}
-                  <Text className="text-accent">SEARCH TERM</Text>
-                </Text>
-              )}
+            {!loading && !error && searchQuery.trim() && movies?.length > 0 && (
+              <Text className="text-xl text-white">
+                Search results for{" "}
+                <Text className="text-accent">{searchQuery}</Text>
+              </Text>
+            )}
           </>
         }
       />
