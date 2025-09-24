@@ -12,6 +12,9 @@ export default function Search() {
   const [searchQuery, setSearchQuery] = useState("");
 
   // function to handle search queries
+  const handleSearch = (text: string) => {
+    setSearchQuery(text);
+  };
 
   // fetch movies based on search query
   const {
@@ -60,7 +63,7 @@ export default function Search() {
               <SearchBar
                 placeholder="Search movies..."
                 value={searchQuery}
-                onChangeText={(text: string) => setSearchQuery(text)}
+                onChangeText={handleSearch}
               />
             </View>
 
