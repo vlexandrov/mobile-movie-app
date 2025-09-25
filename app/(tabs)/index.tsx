@@ -1,6 +1,7 @@
 //import "@/global.css";
 import MovieCard from "@/components/MovieCard";
 import SearchBar from "@/components/SearchBar";
+import TrendingCard from "@/components/TrendingCard";
 import { icons } from "@/constants/icons";
 import { images } from "@/constants/images";
 import { fetchMovies } from "@/services/api";
@@ -82,7 +83,7 @@ export default function Index() {
                   className="mt-3 mb-4"
                   data={trendingMovies}
                   renderItem={({ item, index }) => (
-                    <Text className="text-white">{item.title}</Text>
+                    <TrendingCard movie={item} index={index} />
                   )}
                   keyExtractor={(item) => item.movie_id.toString()}
                 />
