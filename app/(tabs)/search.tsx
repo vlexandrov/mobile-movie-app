@@ -39,7 +39,7 @@ export default function Search() {
       } else {
         reset();
       }
-    }, 300);
+    }, 500);
 
     return () => clearTimeout(timeoutId);
   }, [searchQuery]);
