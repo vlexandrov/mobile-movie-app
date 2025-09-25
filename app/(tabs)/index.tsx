@@ -45,7 +45,7 @@ export default function Index() {
       />
       <ScrollView
         className="flex-1 px-5"
-        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
         contentContainerStyle={{
           minHeight: "100%",
           paddingBottom: 10,
