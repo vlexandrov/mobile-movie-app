@@ -53,3 +53,20 @@ export const updateSearchCount = async (query: string, movie: Movie) => {
   // if no document is found
   // create a new doc in appwrite db -> 1
 };
+
+export const getTrendingMovies = async (): Promise<
+  TrendingMovie[] | undefined
+> => {
+  try {
+    const result = await database.listRows({
+      databaseId: DATABASE_ID,
+      tableId: TABLE_ID,
+      queries: [Query.limit(5), Query.orderDesc("count")],
+    });
+
+    return result.rows as unknown as TrendingMovie[];
+  } catch (error) {
+    console.log(error);
+    return undefined;
+  }
+};
